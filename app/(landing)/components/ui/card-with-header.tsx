@@ -1,0 +1,19 @@
+type TCardWithHeaderProps ={
+    title: string;
+    children: React.ReactNode;    
+}
+
+const CardWithHeader =({title, children}: TCardWithHeaderProps) => {
+    return (
+        <div className="bg-white">
+                <div className="px-5 py-4 border-b border-gray-100">
+                    <h2 className="font-bold text-lg">{title}</h2>
+                </div>
+                <div className="p-5">
+                    {children}
+                </div>
+        </div>
+    );
+};
+
+export default CardWithHeader
