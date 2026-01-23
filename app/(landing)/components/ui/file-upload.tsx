@@ -1,6 +1,6 @@
 "use client";
+
 import { useRef, useState } from "react";
-import React from "react";
 import { FiImage, FiTrash2, FiUploadCloud } from "react-icons/fi";
 
 type TFileUploadProps = {
@@ -22,34 +22,32 @@ const FileUpload = ({ onFileSelect }: TFileUploadProps) => {
     e.stopPropagation();
     setFile(null);
     onFileSelect?.(null);
-    
-    if (fileInputRef.current) {
-        fileInputRef.current.value = ""; 
-    }
   };
 
   return (
     <div
-      onClick={() => {
-        if (!file) fileInputRef.current?.click();
-      }}
+      onClick={() => fileInputRef.current?.click()}
       onDragOver={(e) => e.preventDefault()}
       onDrop={(e) => {
         e.preventDefault();
         handleFileChange(e.dataTransfer.files?.[0]);
       }}
-      className="flex flex-col justify-center items-center w-full py-6 border border-dashed border-primary bg-primary-light cursor-pointer"
+      className="flex flex-col justify-center items-center w-full py-6 border border-dashed border-primary bg-primary-light"
     >
       <input
         type="file"
-        ref={fileInputRef}
         className="hidden"
+        ref={fileInputRef}
         accept="image/*"
         onChange={(e) => handleFileChange(e.target.files?.[0])}
       />
-      
-      {file ? (
+      {!file ? (
         <div className="text-center my-5">
+          <FiUploadCloud className="text-primary mx-auto" />
+          <p className="text-xs">Upload Your Payment Receipt here</p>
+        </div>
+      ) : (
+        <div className="text-center">
           <FiImage className="text-primary mx-auto mb-4" size={28} />
           <p className="text-sm text-primary">{file.name}</p>
           <p className="text-sm text-gray-400">
@@ -57,15 +55,10 @@ const FileUpload = ({ onFileSelect }: TFileUploadProps) => {
           </p>
           <button
             onClick={removeFile}
-            className="flex gap-2 bg-primary/90 text-white mx-auto rounded mt-4 px-2 py-1 text-xs hover:bg-primary z-10 relative"
+            className="flex gap-2 bg-primary/90 text-white mx-auto rounded mt-4 px-2"
           >
             <FiTrash2 className="self-center" /> Remove
           </button>
-        </div>
-      ) : (
-        <div className="text-center" onClick={() => fileInputRef.current?.click()}>
-          <FiUploadCloud className="text-primary mx-auto" size={24} />
-          <p className="text-xs mt-2">Upload Your Payment Receipt here</p>
         </div>
       )}
     </div>
