@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Category } from "@/app/type";
+import { Category } from "@/app/types";
 import { getImageUrl } from "@/app/lib/api";
 import { FiArrowRight } from "react-icons/fi";
 

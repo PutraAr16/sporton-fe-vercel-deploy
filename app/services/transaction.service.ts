@@ -1,5 +1,5 @@
 import { fetchAPI } from "../lib/api"
-import { Transaction } from "../type"
+import { Transaction } from "../types"
 
 export const transactionCheckout = async (
     form: FormData
