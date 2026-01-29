@@ -23,13 +23,15 @@ const ProductsSection = ({ products }: TProductsProps) => {
   }
 
   return (
-    <section id="products-section" className="container mx-auto mt-32">
+    <section id="products-section" className="container mx-auto mt-32 mb-52">
       <h2 className="font-bold italic text-4xl text-center mb-11">
         <span className="text-primary">OUR </span> PRODUCTS
       </h2>
       <div className="grid grid-cols-4 gap-5">
         {products.map((product) => (
-          <Link href={`/product/${product._id}`} key={product._id} className="p-1.5">
+          <Link href={`/product/${product._id}`} 
+                key={product._id} 
+                className="p-1.5 bg-white hover:drop-shadow-xl duration-300">
             <div className="bg-primary-light aspect-square w-full flex justify-center items-center relative">
               <Image
                 src={getImageUrl(product.imageUrl)}
@@ -38,11 +40,12 @@ const ProductsSection = ({ products }: TProductsProps) => {
                 height={300}
                 className="aspect-square object-contain"
               />
-              <Button className="w-10 h-10 p-2! absolute right-3 top-3" onClick={(e) => handleAddToCart(e, product)}>
+              <Button className="w-10 h-10 p-2! absolute right-3 top-3" 
+                      onClick={(e) => handleAddToCart(e, product)}>
                 <FiPlus size={24} />
               </Button>
             </div>
-            <h3 className="font-medium text-lg mb-1.5 mt-4 bg-white hover:drop-shadow-xl duration-300">
+            <h3 className="font-medium text-lg mb-1.5 mt-4">
               {product.name}
             </h3>
             <div className="flex justify-between mb-8">

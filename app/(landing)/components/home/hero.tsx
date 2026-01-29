@@ -42,7 +42,7 @@ const HeroSection = () => {
           src="/images/img-hero.webp"
           alt="image sporton hero"
           width={700}
-          height={900}
+          height={950}
           className="absolute -right-5 top-1/2 -translate-y-1/2"
         />
       </div>

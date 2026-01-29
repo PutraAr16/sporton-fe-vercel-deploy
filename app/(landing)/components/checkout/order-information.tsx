@@ -10,7 +10,6 @@ type TOrderInformation = {
 
 
 const OrderInformation = ({formData, setFormData}: TOrderInformation) => {
-
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
@@ -34,11 +33,11 @@ const OrderInformation = ({formData, setFormData}: TOrderInformation) => {
         <div className="input-group">
           <label htmlFor="customerContact">Whatsapp Number</label>
           <input
-            type="tel"
+            type="number"
             placeholder="Type Your Whatsapp Number"
             id="customerContact"
             name="customerContact"
-            value={formData.customerContact || ""}
+            value={formData.customerContact ?? ""}
             onChange={handleInputChange}
           />
         </div>

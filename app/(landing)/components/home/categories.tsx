@@ -1,14 +1,16 @@
 import Link from "next/link";
-import { FiArrowRight } from "react-icons/fi";
 import Image from "next/image";
 import { Category } from "@/app/type";
 import { getImageUrl } from "@/app/lib/api";
+import { FiArrowRight } from "react-icons/fi";
 
 type TCategoriesProps = {
   categories: Category[];
 };
 
 const CategoriesSection = ({ categories }: TCategoriesProps) => {
+  console.log(categories);
+
   return (
     <section id="categories-section" className="container mx-auto pb-20">
       <div className="flex justify-between">
